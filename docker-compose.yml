@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    command: rails s -b 0.0.0.0
+    ports:
+      - 3000:3000
+    working_dir: /Proyecto-B
+    volumes:
+      - ./:/Proyecto-B
+    depends_on:
+      - db
+    env_file:
+      - .env
+
+  db:
+    image: postgres
+    volumes:
+      - Proyecto-B-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+volumes:
+  Proyecto-B-db:
