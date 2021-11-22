@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Schedule:</strong>
+  <%= @function.schedule %>
+</p>
+
+<p>
+  <strong>Room:</strong>
+  <%= @function.room %>
+</p>
+
+<p>
+  <strong>Movie:</strong>
+  <%= @function.movie_id %>
+</p>
+
+<%= link_to 'Edit', edit_function_path(@function) %> |
+<%= link_to 'Back', functions_path %>
