@@ -21,5 +21,23 @@
   <%= @movie.finalDate %>
 </p>
 
+<h2>Functions</h2>
+<% for function in @movie.functions %>
+  <ul>
+    <li>
+      <p>
+        <strong>Schedule:</strong>
+        <%= function.schedule %>
+      </p>
+
+      <p>
+        <strong>Room:</strong>
+        <%= function.room %>
+      </p>
+    </li>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
+<%= link_to 'Add Function', movie_functions_path(@movie) %> |
 <%= link_to 'Back', movies_path %>

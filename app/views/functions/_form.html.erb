@@ -1,4 +1,4 @@
-<%= form_with(model: function) do |form| %>
+<%= form_with(model: [@movie, function]) do |form| %>
   <% if function.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(function.errors.count, "error") %> prohibited this function from being saved:</h2>
@@ -19,11 +19,6 @@
   <div class="field">
     <%= form.label :room %>
     <%= form.number_field :room %>
-  </div>
-
-  <div class="field">
-    <%= form.label :movie_id %>
-    <%= form.text_field :movie_id %>
   </div>
 
   <div class="actions">

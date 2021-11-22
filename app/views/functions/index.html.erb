@@ -17,10 +17,10 @@
       <tr>
         <td><%= function.schedule %></td>
         <td><%= function.room %></td>
-        <td><%= function.movie_id %></td>
-        <td><%= link_to 'Show', function %></td>
-        <td><%= link_to 'Edit', edit_function_path(function) %></td>
-        <td><%= link_to 'Destroy', function, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= function.movie.name %></td>
+        <td><%= link_to 'Show Movie', [@movie] %></td>
+        <td><%= link_to 'Edit Function', edit_movie_function_path(@movie, function) %></td>
+        <td><%= link_to 'Destroy Function', [@movie, function], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Function', new_function_path %>
+<%= link_to 'New Function', new_movie_function_path(@movie) %>

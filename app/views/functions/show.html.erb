@@ -15,5 +15,5 @@
   <%= @function.movie_id %>
 </p>
 
-<%= link_to 'Edit', edit_function_path(@function) %> |
-<%= link_to 'Back', functions_path %>
+<%= link_to 'Edit', edit_movie_function_path(@movie, @function) %> |
+<%= link_to 'Back', movie_functions_path(@movie) %>

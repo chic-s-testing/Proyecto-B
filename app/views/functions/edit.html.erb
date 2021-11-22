@@ -2,5 +2,5 @@
 
 <%= render 'form', function: @function %>
 
-<%= link_to 'Show', @function %> |
-<%= link_to 'Back', functions_path %>
+<%= link_to 'Show', [@movie, @function] %> |
+<%= link_to 'Back', movie_functions_path(@movie) %>
