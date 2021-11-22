@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 # Ejemplo que no funciona, pero para saber cómo debería ser
-RSpec.describe 'ExampleHome', type: :feature do
+RSpec.describe 'ExampleMoviesIndex', type: :feature do
   it 'success' do
-    visit '/'
-    expect(page).to have_content("Yay! You’re on Rails!")
+    visit '/movies'
+    expect(page).to have_content("Movies")
   end
 end
