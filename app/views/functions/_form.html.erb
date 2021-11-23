@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :schedule %>
-    <%= form.text_field :schedule %>
+    <%= form.text_field :schedule options_for_select(["matine", "tanda", "noche"]) %>
   </div>
 
   <div class="field">

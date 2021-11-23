@@ -38,7 +38,7 @@ class FunctionsController < ApplicationController
     @function = @movie.functions.build(function_params)
     respond_to do |format|
       if @function.save
-        format.html { redirect_to movies_path, notice: "La función fue creada exitosamente" }
+        format.html { redirect_to movie_path(@movie), notice: "Function was successfully created." }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new, status: :unprocessable_entity }
