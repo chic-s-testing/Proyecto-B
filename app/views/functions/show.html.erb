@@ -15,5 +15,23 @@
   <%= @function.movie_id %>
 </p>
 
+<h2>Reservations</h2>
+<% for reservation in @function.reservations %>
+    <ul>
+      <li>
+        <p>
+          <strong>Seat:</strong>
+          <%= reservation.seat %>
+        </p>
+
+        <p>
+          <strong>Day:</strong>
+          <%= reservation.day %>
+        </p>
+    </li>
+  </ul>
+<% end %>
+
 <%= link_to 'Edit', edit_movie_function_path(@movie, @function) %> |
+<%= link_to 'Add Reservation', new_movie_function_reservation_path(@movie, @function) %> |
 <%= link_to 'Back', movie_functions_path(@movie) %>

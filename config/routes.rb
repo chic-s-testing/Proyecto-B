@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+
   resources :movies do
-    resources :functions
+    resources :functions do
+      resources :reservations
+    end
   end
 
   root 'movies#index'
