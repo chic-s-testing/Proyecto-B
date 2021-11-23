@@ -1,0 +1,27 @@
+<%= form_with(model: [@movie, function]) do |form| %>
+  <% if function.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(function.errors.count, "error") %> prohibited this function from being saved:</h2>
+
+      <ul>
+        <% function.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :schedule %>
+    <%= form.text_field :schedule %>
+  </div>
+
+  <div class="field">
+    <%= form.label :room %>
+    <%= form.number_field :room %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

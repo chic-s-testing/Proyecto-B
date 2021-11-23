@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Functions</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Schedule</th>
+      <th>Room</th>
+      <th>Movie</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @functions.each do |function| %>
+      <tr>
+        <td><%= function.schedule %></td>
+        <td><%= function.room %></td>
+        <td><%= function.movie.name %></td>
+        <td><%= link_to 'Show Movie', [@movie] %></td>
+        <td><%= link_to 'Edit Function', edit_movie_function_path(@movie, function) %></td>
+        <td><%= link_to 'Destroy Function', [@movie, function], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Function', new_movie_function_path(@movie) %>
