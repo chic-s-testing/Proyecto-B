@@ -5,10 +5,26 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag :application %>
 
   </head>
 
   <body>
+    <nav class="navbar has-background-link" role="navigation" aria-label="main navigation">
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item has-text-white">
+            Home
+          </a>
+
+          <a class="navbar-item has-text-white">
+            Cartelera
+          </a>
+        </div>
+
+      </div>
+    </nav>
     <%= yield %>
   </body>
 </html>
