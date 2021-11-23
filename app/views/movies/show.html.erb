@@ -22,7 +22,7 @@
 </p>
 
 <h2>Functions</h2>
-<% for function in @movie.functions %>
+<% @movie.functions.each do |function| %>
   <ul>
     <li>
       <p>
@@ -34,10 +34,12 @@
         <strong>Room:</strong>
         <%= function.room %>
       </p>
+
+      <%= link_to 'Show Function', movie_function_path(@movie, function) %>
     </li>
   </ul>
 <% end %>
 
 <%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Add Function', movie_functions_path(@movie) %> |
+<%= link_to 'Add Function', new_movie_function_path(@movie) %> |
 <%= link_to 'Back', movies_path %>
