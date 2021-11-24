@@ -1,6 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<div class="container">
   <div class="section is-flex-shrink-2">
     <h1 class="title">Cartelera</h1>
     <%= link_to '+ Registrar Película', new_movie_path, class: "button is-primary is-medium"%>
@@ -48,7 +47,6 @@
           <%= link_to 'Ver pelicula', movie, class: "button is-primary is-small" %>
           <%= link_to 'Editar pelicula', edit_movie_path(movie), class: "button is-primary is-small" %>
           <%= link_to 'Eliminar pelicula', movie, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-primary is-small" %>
-
         </div>
 
       </div>
@@ -56,4 +54,3 @@
   </div>
   <% end %>
   </div>
-</div>
