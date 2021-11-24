@@ -8,8 +8,7 @@ RSpec.describe 'New Movie with InitialDate after FinalDate', type: :feature do
     fill_in 'movie_initialDate', :with => "01-01-2024"
     fill_in 'movie_finalDate', :with => "01-01-2022"
     click_button "commit"
-    expect(page).to have_content("Initialdate must be before Final Date.")
-    expect(page).to have_content("Finaldate must be after Initial Date.")
+    expect(page).to have_content("Fecha final debe ser posterior a la fecha inicial.")
   end
 end
 
@@ -21,7 +20,7 @@ RSpec.describe 'New Movie with InitialDate Today', type: :feature do
     fill_in 'movie_initialDate', :with => Date.today
     fill_in 'movie_finalDate', :with => "01-01-2022"
     click_button "commit"
-    expect(page).to have_content("Initialdate must be after today.")
+    expect(page).to have_content("Fecha inicial debe ser posterior a la fecha de hoy.")
   end
 end
 
@@ -33,7 +32,7 @@ RSpec.describe 'New Movie with FinalDate Today', type: :feature do
     fill_in 'movie_initialDate', :with => "01-01-2022"
     fill_in 'movie_finalDate', :with => Date.today
     click_button "commit"
-    expect(page).to have_content("Finaldate must be after today.")
+    expect(page).to have_content("Fecha final debe ser posterior a la fecha de hoy.")
   end
 end
 
@@ -45,8 +44,8 @@ RSpec.describe 'New Movie with InitialDate and FinalDate Today', type: :feature 
     fill_in 'movie_initialDate', :with => Date.today
     fill_in 'movie_finalDate', :with => Date.today
     click_button "commit"
-    expect(page).to have_content("Initialdate must be after today.")
-    expect(page).to have_content("Finaldate must be after today.")
+    expect(page).to have_content("Fecha inicial debe ser posterior a la fecha de hoy.")
+    expect(page).to have_content("Fecha final debe ser posterior a la fecha de hoy.")
   end
 end
 
@@ -58,7 +57,7 @@ RSpec.describe 'Blank name for new movie', type: :feature do
     fill_in 'movie_initialDate', :with => "01-01-2022"
     fill_in 'movie_finalDate', :with => "01-01-2024"
     click_button "commit"
-    expect(page).to have_content("Name can't be blank")
+    expect(page).to have_content("Nombre es requerido.")
   end
 end
 
@@ -70,7 +69,7 @@ RSpec.describe 'Blank photo for new movie', type: :feature do
     fill_in 'movie_initialDate', :with => "01-01-2022"
     fill_in 'movie_finalDate', :with => "01-01-2024"
     click_button "commit"
-    expect(page).to have_content("Photo can't be blank")
+    expect(page).to have_content("Foto es requerida.")
   end
 end
 
@@ -82,7 +81,7 @@ RSpec.describe 'Blank Initial Date for new movie', type: :feature do
     fill_in 'movie_initialDate', :with => ""
     fill_in 'movie_finalDate', :with => "01-01-2024"
     click_button "commit"
-    expect(page).to have_content("Initialdate can't be blank")
+    expect(page).to have_content("Fecha inicial es requerida.")
   end
 end
 
@@ -94,7 +93,7 @@ RSpec.describe 'Blank Initial Date for new movie', type: :feature do
     fill_in 'movie_initialDate', :with => "01-01-2022"
     fill_in 'movie_finalDate', :with => ""
     click_button "commit"
-    expect(page).to have_content("Finaldate can't be blank")
+    expect(page).to have_content("Fecha final es requerida.")
   end
 end
 
