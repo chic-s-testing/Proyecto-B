@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# Ejemplo que no funciona, pero para saber cómo debería ser
+# Ejemplo
 RSpec.describe 'ExampleMoviesIndex', type: :feature do
   it 'success' do
     visit '/movies'

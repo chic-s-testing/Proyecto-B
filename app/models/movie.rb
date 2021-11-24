@@ -8,8 +8,8 @@ class Movie < ApplicationRecord
         return unless initialDate? && finalDate?
 
         if !finalDate.after?(initialDate)
-            errors.add(:initialDate, "Must be before Final Date.")
-            errors.add(:finalDate, "Must be after Initial Date.")
+            errors.add(:initialDate, "must be before Final Date.")
+            errors.add(:finalDate, "must be after Initial Date.")
         end
 
         if !initialDate.after?(Date.today)
