@@ -44,9 +44,6 @@
             <%end%>
             </p>
           <p>Funciones: <%= movie.initialDate %> hasta <%= movie.finalDate %></p>
-          <%= link_to 'Ver pelicula', movie, class: "button is-primary is-small" %>
-          <%= link_to 'Editar pelicula', edit_movie_path(movie), class: "button is-primary is-small" %>
-          <%= link_to 'Eliminar pelicula', movie, method: :delete, data: { confirm: 'Are you sure?' }, class: "button is-primary is-small" %>
         </div>
 
       </div>
