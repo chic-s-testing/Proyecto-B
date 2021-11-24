@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ProyectoB</title>
+    <title>DCCinema</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -14,14 +14,14 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item has-text-white">
-            Home
-          </a>
+          <%= link_to 'Home', "/", class: "navbar-item has-text-white"%>
           <%= link_to 'Cartelera', movies_path, class: "navbar-item has-text-white"%>
         </div>
 
       </div>
     </nav>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
