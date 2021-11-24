@@ -17,15 +17,33 @@
       <div class="media-content">
         <div class="content">
           <p class="title is-4"><%= movie.name %></p>
-          <p> Matine:  
-          <span class="tag is-info is-light">SALA 1</span>
-          </p>
-          <p> Tanda:  
-          <span class="tag is-info is-light">SALA 1</span>
-          </p>
-          <p> Noche:  
-          <span class="tag is-info is-light">SALA 1</span>
-          </p>
+          <%matine = [] %>
+          <%tanda = [] %>
+          <%noche = [] %>
+          <% movie.functions.each do |function| %>
+            <%if function.schedule == 'matine'%>
+              <%matine.push(function)%>
+            <%elsif function.schedule == 'tanda'%>
+              <%tanda.push(function)%>
+            <%elsif function.schedule == 'noche'%>
+              <%noche.push(function)%>
+            <% end %>
+            <%end%>
+            <p> Matine:
+            <%matine.each do |function|%>
+              <%= link_to 'SALA %i' %[function.room], movie_function_path(movie, function), class: "tag is-info is-light"%>
+            <%end%>
+            </p>
+            <p> Tanda:  
+            <%tanda.each do |function|%>
+              <%= link_to 'SALA %i' %[function.room], movie_function_path(movie, function), class: "tag is-info is-light"%>
+            <%end%>
+            </p>
+            <p> Noche:  
+            <%noche.each do |function|%>
+              <%= link_to 'SALA %i' %[function.room], movie_function_path(movie, function), class: "tag is-info is-light"%>
+            <%end%>
+            </p>
           <p>Funciones: <%= movie.initialDate %> hasta <%= movie.finalDate %></p>
           <%= link_to 'Ver pelicula', movie, class: "button is-primary is-small" %>
           <%= link_to 'Editar pelicula', edit_movie_path(movie), class: "button is-primary is-small" %>
