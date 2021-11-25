@@ -30,7 +30,6 @@ class FunctionsController < ApplicationController
             format.html { redirect_to movies_path, notice: "La sala seleccionada ya tiene una función asignada en ese horario" }
             format.json { render json: @function.errors, status: :bad_request }
           end
-          return
         end
       end
     end
