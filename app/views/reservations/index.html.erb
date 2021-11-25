@@ -20,8 +20,6 @@
         <td><%= reservation.day %></td>
         <td><%= reservation.function.schedule %></td>
         <td><%= reservation.function.movie.name %></td>
-        <td><%= link_to 'Edit Reservation', edit_movie_function_reservation_path(@movie, @function, reservation) %></td>
-        <td><%= link_to 'Destroy Reservation', [@movie, @function, reservation], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

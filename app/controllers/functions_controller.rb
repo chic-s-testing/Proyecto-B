@@ -1,4 +1,5 @@
 class FunctionsController < ApplicationController
+
   before_action :get_movie
   before_action :set_function, only: %i[ show edit update destroy ]
 
