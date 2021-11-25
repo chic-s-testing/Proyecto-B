@@ -22,11 +22,23 @@ class FunctionsController < ApplicationController
 
   # POST /functions or /functions.json
   def create
+    @movies = Movie.where(initialDate: @movie.initialDate..@movie.finalDate).or(Movie.where(finalDate: @movie.initialDate..@movie.finalDate))
+    @movies.each do |movie|
+      movie.functions.each do |function|
+        if function.room == function_params[:room].to_i && function.schedule == function_params[:schedule]
+          respond_to do |format|
+            format.html { redirect_to movies_path, notice: "La sala seleccionada ya tiene una función asignada en ese horario" }
+            format.json { render json: @function.errors, status: :bad_request }
+          end
+          return
+        end
+      end
+    end
+    
     @function = @movie.functions.build(function_params)
-
     respond_to do |format|
       if @function.save
-        format.html { redirect_to movie_functions_path(@movie), notice: "Function was successfully created." }
+        format.html { redirect_to movies_path, notice: "La función fue creada exitosamente" }
         format.json { render :show, status: :created, location: @function }
       else
         format.html { render :new, status: :unprocessable_entity }

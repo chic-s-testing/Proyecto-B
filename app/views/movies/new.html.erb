@@ -1,5 +1,49 @@
-<h1>New Movie</h1>
+<div class="section is-flex-shrink-2">
+  <h1 class="title">Registrar nueva película</h1>
+</div>
 
-<%= render 'form', movie: @movie %>
+<div class="box">
+  <%= form_with model: @movie do |form| %>
+    <div class="field">
+      <label class="label">Nombre</label>
+      <div class="control">
+        <%= form.text_field :name, :class => "input" %>
+      </div>
+    </div>
 
-<%= link_to 'Back', movies_path %>
+    <div class="field">
+      <label class="label">Foto (url)</label>
+      <div class="control">
+        <%= form.text_field :photo, :class => "input" %>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Fecha de inicio</label>
+      <div class="control">
+        <div class="select">
+          <%= form.date_field :initialDate, :class => "input" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Fecha de término</label>
+      <div class="control">
+        <div class="select">
+          <%= form.date_field :finalDate, :class => "input" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-grouped">
+      <div class="control">
+        <%= form.submit "Registrar película", :class => "button is-link" %>
+      </div>
+      <div class="control">
+        <%= link_to 'Volver', movies_path, :class => "button is-link is-light" %>
+      </div>
+  </div>
+  <% end %>
+
+</div>
