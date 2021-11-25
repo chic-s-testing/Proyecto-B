@@ -22,7 +22,6 @@ class FunctionsController < ApplicationController
 
   # POST /functions or /functions.json
   def create
-    schedules = ["matine", "tanda", "noche"]
     @movies = Movie.where(initialDate: @movie.initialDate..@movie.finalDate).or(Movie.where(finalDate: @movie.initialDate..@movie.finalDate))
     @movies.each do |movie|
       movie.functions.each do |function|
