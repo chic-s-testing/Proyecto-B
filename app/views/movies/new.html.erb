@@ -3,6 +3,18 @@
 </div>
 
 <div class="box">
+  <% if @movie.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@movie.errors.count, "error") %> errores en el form:</h2>
+
+      <ul>
+        <% @movie.errors.each do |error| %>
+          <li>- <%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= form_with model: @movie do |form| %>
     <div class="field">
       <label class="label">Nombre</label>
