@@ -25,10 +25,19 @@
           <h2 class="subtitle">Seleccionar asientos a reservar:</h2>
           <div class="field">
               <% for seat in 1..48 %>
-
                   <%= check_box_tag 'seats[]', seat, false %>
-
-                  <%= seat%>
+                  <% if  1 <= seat && 12 >= seat%>
+                    A<%= seat %>
+                  <% elsif  13 <= seat && 24 >= seat%>
+                    B<%= (seat + 1)% 13 %>
+                  <% elsif  25 <= seat && 36 >= seat%>
+                    C<%= (seat + 2)% 13 %>
+                  <% elsif  37 <= seat && 48 >= seat%>
+                    D<%= (seat + 3)% 13 %>
+                  <% end %>
+                  <%if seat % 12 == 0%>
+                    </br>
+                  <%end%>
                 </label>
               <% end %>
               <br>
@@ -45,11 +54,11 @@
             <% if  1 <= reservation.seat.to_i && 12 >= reservation.seat.to_i%>
               A<%= reservation.seat %>
             <% elsif  13 <= reservation.seat.to_i && 24 >= reservation.seat.to_i%>
-              B<%= reservation.seat / 2%>
+              B<%= (reservation.seat + 1)% 13%>
             <% elsif  25 <= reservation.seat.to_i && 36 >= reservation.seat.to_i%>
-              C<%= reservation.seat / 3%>
+              C<%= (reservation.seat + 2)% 13%>
             <% elsif  37 <= reservation.seat.to_i && 48 >= reservation.seat.to_i%>
-              D<%= reservation.seat / 4%>
+              D<%= (reservation.seat + 3)% 13%>
             <% end %>
           <% end %>
         </div>

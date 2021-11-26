@@ -23,15 +23,11 @@ class ReservationsController < ApplicationController
 
   # POST /reservations or /reservations.json
   def create
-    puts "********************************"
-    puts reservation_params
-    puts params[:seats]
+
     reservations = []
     params[:seats].each do |seat_value|
       reservations.push({'seat' => seat_value, 'day' => reservation_params[:day], 'function_id' => params[:function_id]})
     end
-    puts "valores recibidos"
-    puts reservations
     @reservations = @function.reservations.create(reservations)
     success = true
     @reservations.each do |r| 
