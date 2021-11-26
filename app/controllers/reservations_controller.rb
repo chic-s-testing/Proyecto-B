@@ -27,7 +27,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to movie_function_reservations_path(@function), notice: "Reservation was successfully created." }
+        format.html { redirect_to movie_function_path(@movie, @function), notice: "Reservation was successfully created." }
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new, status: :unprocessable_entity }
