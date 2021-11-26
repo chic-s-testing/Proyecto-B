@@ -105,6 +105,6 @@ RSpec.describe 'Sucessfully create movie', type: :feature do
     fill_in 'movie_initialDate', :with => "01-01-2022"
     fill_in 'movie_finalDate', :with => "01-01-2024"
     click_button "commit"
-    expect(page).to have_content("Movie was successfully created.")
+    expect(page).to have_content("La película fue creada con éxito.")
   end
 end
