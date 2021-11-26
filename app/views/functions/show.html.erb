@@ -14,9 +14,9 @@
   </div>
 
   <div class="content">
-    <label class="label">Reservas</label>
+    <label class="label">Días para reservar</label>
     <% (@function.movie.initialDate..@function.movie.finalDate).each do |date| %>
-      <p><%= link_to date, new_movie_function_reservation_path(@movie, @function, :date => date), :class => "button is-link" %></p>
+      <p><%= link_to date, new_movie_function_reservation_path(@movie, @function, :date => date), :class => "button is-success is-light" %></p>
     <% end %>
 
   <div class="field is-grouped">

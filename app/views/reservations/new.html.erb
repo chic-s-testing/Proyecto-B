@@ -1,30 +1,69 @@
-<h1>New Reservation</h1>
+<div class="section is-flex-shrink-2">
+  <h1 class="title">Reserva de asientos</h1>
+</div>
 
-<%= form_with(model: [@movie, @function, @reservation]) do |form| %>
-    <% if @reservation.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
-  
-        <ul>
-          <% @reservation.errors.each do |error| %>
-            <li><%= error.full_message %></li>
+<div class="box">
+
+  <%= form_with(model: [@movie, @function, @reservation]) do |form| %>
+      <% if @reservation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+    
+          <ul>
+            <% @reservation.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="columns">
+        <div class="column">
+          <h2 class="subtitle">Distribución de asientos:</h2>
+          <%= image_tag("reservas.png", :alt => "rss feed", :size => '600x180') %>
+          
+          <h2 class="subtitle">Seleccionar asientos a reservar:</h2>
+          <div class="field">
+            <% for line in ["A", "B", "C", "D"] %>
+              <% for seat in 1..12 %>
+                <label class="checkbox">
+                  <%= form.check_box :seat%>
+                  <%= line%><%= seat%>
+                </label>
+              <% end %>
+              <br>
+            <% end %>
+          </div>
+        
+          <div class="field">
+            <%= form.hidden_field :day, :value => params[:date]  %>
+          </div>
+        </div>
+
+        <div class="column">
+          <h2 class="subtitle">Reservas realizadas:</h2>
+          <% (@function.reservations).each do |reservation| %>
+            <% if  1 <= reservation.seat.to_i && 12 >= reservation.seat.to_i%>
+              A<%= reservation.seat %>
+            <% elsif  13 <= reservation.seat.to_i && 24 >= reservation.seat.to_i%>
+              B<%= reservation.seat / 2%>
+            <% elsif  25 <= reservation.seat.to_i && 36 >= reservation.seat.to_i%>
+              C<%= reservation.seat / 3%>
+            <% elsif  37 <= reservation.seat.to_i && 48 >= reservation.seat.to_i%>
+              D<%= reservation.seat / 4%>
+            <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
-    <% end %>
-  
-    <div class="field">
-      <%= form.label :seat %>
-      <%= form.number_field :seat %>
-    </div>
-  
-    <div class="field">
-      <%= form.hidden_field :day, :value => params[:date]  %>
-    </div>
-  
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-<% end %>
 
-<%= link_to 'Back', movie_function_path(@movie, @function) %>
+      <div class="field is-grouped">
+        <div class="control">
+          <%= form.submit "Reservar asientos", :class => "button is-link"%>
+        </div>
+
+        <div class="control">
+          <%= link_to 'Volver', movie_function_path(@movie, @function), :class => "button is-link is-light" %>
+        </div>
+      </div>
+  <% end %>  
+</div>
