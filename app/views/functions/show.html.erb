@@ -1,36 +1,50 @@
-<p id="notice"><%= notice %></p>
+<div class="section is-flex-shrink-2">
+  <h1 class="title">Detalles Función</h1>
+</div>
 
-<p>
-  <strong>Schedule:</strong>
-  <%= @function.schedule %>
-</p>
+<div class="box">
+  <h2 class="title is-4"><%= @movie.name %></h2>
 
-<p>
-  <strong>Room:</strong>
-  <%= @function.room %>
-</p>
+  <div class="field">
+    <label class="label">Horario: <%= @function.schedule %></label>
+  </div>
 
-<p>
-  <strong>Movie:</strong>
-  <%= @function.movie_id %>
-</p>
+  <div class="field">
+    <label class="label">Sala: <%= @function.room %></label>
+  </div>
 
-<h2>Reservations</h2>
-<% for reservation in @function.reservations %>
-    <ul>
-      <li>
-        <p>
-          <strong>Seat:</strong>
-          <%= reservation.seat %>
-        </p>
+  <div class="content">
+    <%reservas = {} %>
+    <% (@function.movie.initialDate..@function.movie.finalDate).each do |date| %>
+      <%asientos = [] %>
+      <% reservas[date] = asientos %>
+      <% @function.reservations.each do |reservation| %>
+        <%if date == reservation.day %>
+            <% reservas[date].push(reservation.seat)%>
+        <% end %>
+      <% end %>
+    <% end %>
+    
+    <label class="label">Reservas</label>
+    <%reservas.each do |dia, asientos|%>
+      <p><%= dia %>:</p>
+        <% asientos.each do |asiento| %>
+          <p>
+            <% if asiento != [] %>
+              <%= asiento %>
+            <% else %>
+              No hay reservas
+            <% end %>
+          </p>
+        <% end %>
+    <%end%>
 
-        <p>
-          <strong>Day:</strong>
-          <%= reservation.day %>
-        </p>
-    </li>
-  </ul>
-<% end %>
-
-<%= link_to 'Add Reservation', new_movie_function_reservation_path(@movie, @function) %> |
-<%= link_to 'Back', movies_path %>
+  <div class="field is-grouped">
+    <div class="control">
+      <%= link_to "Añadir reserva", new_movie_function_reservation_path(@movie, @function), :class => "button is-link" %>
+    </div>
+    <div class="control">
+      <%= link_to 'Volver', movies_path, :class => "button is-link is-light" %>
+    </div>
+  </div>
+</div>
