@@ -14,35 +14,12 @@
   </div>
 
   <div class="content">
-    <%reservas = {} %>
-    <% (@function.movie.initialDate..@function.movie.finalDate).each do |date| %>
-      <%asientos = [] %>
-      <% reservas[date] = asientos %>
-      <% @function.reservations.each do |reservation| %>
-        <%if date == reservation.day %>
-            <% reservas[date].push(reservation.seat)%>
-        <% end %>
-      <% end %>
-    <% end %>
-    
     <label class="label">Reservas</label>
-    <%reservas.each do |dia, asientos|%>
-      <p><%= dia %>:</p>
-        <% asientos.each do |asiento| %>
-          <p>
-            <% if asiento != [] %>
-              <%= asiento %>
-            <% else %>
-              No hay reservas
-            <% end %>
-          </p>
-        <% end %>
-    <%end%>
+    <% (@function.movie.initialDate..@function.movie.finalDate).each do |date| %>
+      <p><%= link_to date, new_movie_function_reservation_path(@movie, @function, :date => date), :class => "button is-link" %></p>
+    <% end %>
 
   <div class="field is-grouped">
-    <div class="control">
-      <%= link_to "Añadir reserva", new_movie_function_reservation_path(@movie, @function), :class => "button is-link" %>
-    </div>
     <div class="control">
       <%= link_to 'Volver', movies_path, :class => "button is-link is-light" %>
     </div>
