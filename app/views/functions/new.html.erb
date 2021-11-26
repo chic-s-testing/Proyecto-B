@@ -1,14 +1,15 @@
 <div class="section is-flex-shrink-2">
   <h1 class="title">Nueva función</h1>
-  <h2 class="title is-4"><%= @movie.name %></h2>
 </div>
 
 <div class="box">
+  <h2 class="title is-4"><%= @movie.name %></h2>
+  <p id="notice"><%= notice %></p>
   <%= form_with model: @function, url: movie_functions_path do |form| %>
     <div class="field">
       <label class="label">Horario</label>
       <div class="select">
-        <%= form.select :schedule, [["Matine", "matine"], ["Tanda", "tanda"], ["Noche", "noche"]] %>
+        <%= form.select :schedule, [["Matiné", "matine"], ["Tanda", "tanda"], ["Noche", "noche"]] %>
       </div>
     </div>
 

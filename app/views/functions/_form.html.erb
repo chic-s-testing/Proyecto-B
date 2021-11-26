@@ -13,12 +13,12 @@
 
   <div class="field">
     <%= form.label :schedule %>
-    <%= form.text_field :schedule %>
+    <%= form.select :schedule, options_for_select([["Select a Schedule", ""], "Matine", "Tanda", "Noche"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div class="field">
     <%= form.label :room %>
-    <%= form.number_field :room %>
+    <%= form.select :room, options_for_select([["Select a Room", ""], "1" ,"2", "3", "4", "5", "6", "7", "8"]), :class => 'genForm_dropBox' %>
   </div>
 
   <div class="actions">

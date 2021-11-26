@@ -1,5 +1,30 @@
 <h1>New Reservation</h1>
 
-<%= render 'form', reservation: @reservation %>
+<%= form_with(model: [@movie, @function, @reservation]) do |form| %>
+    <% if @reservation.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@reservation.errors.count, "error") %> prohibited this reservation from being saved:</h2>
+  
+        <ul>
+          <% @reservation.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :seat %>
+      <%= form.number_field :seat %>
+    </div>
+  
+    <div class="field">
+      <%= form.hidden_field :day, :value => params[:date]  %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+<% end %>
 
-<%= link_to 'Back', movie_function_reservations_path(@function) %>
+<%= link_to 'Back', movie_function_path(@movie, @function) %>

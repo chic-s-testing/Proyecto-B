@@ -1,37 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="section is-flex-shrink-2">
+  <h1 class="title">Detalles Función</h1>
+</div>
 
-<p>
-  <strong>Schedule:</strong>
-  <%= @function.schedule %>
-</p>
+<div class="box">
+  <h2 class="title is-4"><%= @movie.name %></h2>
 
-<p>
-  <strong>Room:</strong>
-  <%= @function.room %>
-</p>
+  <div class="field">
+    <label class="label">Horario: <%= @function.schedule %></label>
+  </div>
 
-<p>
-  <strong>Movie:</strong>
-  <%= @function.movie_id %>
-</p>
+  <div class="field">
+    <label class="label">Sala: <%= @function.room %></label>
+  </div>
 
-<h2>Reservations</h2>
-<% for reservation in @function.reservations %>
-    <ul>
-      <li>
-        <p>
-          <strong>Seat:</strong>
-          <%= reservation.seat %>
-        </p>
+  <div class="content">
+    <label class="label">Reservas</label>
+    <% (@function.movie.initialDate..@function.movie.finalDate).each do |date| %>
+      <p><%= link_to date, new_movie_function_reservation_path(@movie, @function, :date => date), :class => "button is-link" %></p>
+    <% end %>
 
-        <p>
-          <strong>Day:</strong>
-          <%= reservation.day %>
-        </p>
-    </li>
-  </ul>
-<% end %>
-
-<%= link_to 'Edit', edit_movie_function_path(@movie, @function) %> |
-<%= link_to 'Add Reservation', new_movie_function_reservation_path(@movie, @function) %> |
-<%= link_to 'Back', movie_functions_path(@movie) %>
+  <div class="field is-grouped">
+    <div class="control">
+      <%= link_to 'Volver', movies_path, :class => "button is-link is-light" %>
+    </div>
+  </div>
+</div>

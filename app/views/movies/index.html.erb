@@ -28,7 +28,7 @@
               <%noche.push(function)%>
             <% end %>
             <%end%>
-            <p> Matine:
+            <p> Matiné:
             <%matine.each do |function|%>
               <%= link_to 'SALA %i' %[function.room], movie_function_path(movie, function), class: "tag is-info is-light"%>
             <%end%>
@@ -44,11 +44,10 @@
             <%end%>
             </p>
           <p>Funciones: <%= movie.initialDate %> hasta <%= movie.finalDate %></p>
-          <%= link_to "Añadir función", new_movie_function_path(movie) %>
+          <%= link_to "Añadir función", new_movie_function_path(movie), :class => "button is-link" %>
         </div>
-
       </div>
     </article>
   </div>
   <% end %>
-  </div>
+</div>
