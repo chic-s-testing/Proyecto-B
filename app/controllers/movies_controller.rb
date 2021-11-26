@@ -25,7 +25,7 @@ class MoviesController < ApplicationController
 
     respond_to do |format|
       if @movie.save
-        format.html { redirect_to @movie, notice: "La película fue creada con éxito." }
+        format.html { redirect_to movies_path, notice: "La película fue creada con éxito." }
         format.json { render :show, status: :created, location: @movie }
       else
         format.html { render :new, status: :unprocessable_entity }
