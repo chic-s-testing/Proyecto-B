@@ -24,15 +24,14 @@
           
           <h2 class="subtitle">Seleccionar asientos a reservar:</h2>
           <div class="field">
-            <% for line in ["A", "B", "C", "D"] %>
-              <% for seat in 1..12 %>
-                <label class="checkbox">
-                  <%= form.check_box :seat%>
-                  <%= line%><%= seat%>
+              <% for seat in 1..48 %>
+
+                  <%= check_box_tag 'seats[]', seat, false %>
+
+                  <%= seat%>
                 </label>
               <% end %>
               <br>
-            <% end %>
           </div>
         
           <div class="field">
