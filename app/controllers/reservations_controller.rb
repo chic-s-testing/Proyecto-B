@@ -24,15 +24,23 @@ class ReservationsController < ApplicationController
   # POST /reservations or /reservations.json
   def create
 
-    reservations = []
-    params[:seats].each do |seat_value|
-      reservations.push({'seat' => seat_value, 'day' => reservation_params[:day], 'function_id' => params[:function_id]})
+    if params[:seats]
+      reservations = []
+      params[:seats].each do |seat_value|
+        reservations.push({'seat' => seat_value, 'day' => reservation_params[:day], 'function_id' => params[:function_id]})
+      end
+      @reservations = @function.reservations.create(reservations)
+      success = true
+      @reservations.each do |r| 
+        success = success && r.save
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to movie_function_path(@movie, @function), notice: "No seleccionaste ni un asiento" }
+      end
+      return
     end
-    @reservations = @function.reservations.create(reservations)
-    success = true
-    @reservations.each do |r| 
-      success = success && r.save
-    end
+
     respond_to do |format|
       if success
         format.html { redirect_to movie_function_path(@movie, @function), notice: "Reservation was successfully created." }
