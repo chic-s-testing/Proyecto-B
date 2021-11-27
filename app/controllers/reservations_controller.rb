@@ -23,10 +23,18 @@ class ReservationsController < ApplicationController
 
   # POST /reservations or /reservations.json
   def create
-    @reservation = @function.reservations.build(reservation_params)
 
+    reservations = []
+    params[:seats].each do |seat_value|
+      reservations.push({'seat' => seat_value, 'day' => reservation_params[:day], 'function_id' => params[:function_id]})
+    end
+    @reservations = @function.reservations.create(reservations)
+    success = true
+    @reservations.each do |r| 
+      success = success && r.save
+    end
     respond_to do |format|
-      if @reservation.save
+      if success
         format.html { redirect_to movie_function_path(@movie, @function), notice: "Reservation was successfully created." }
         format.json { render :show, status: :created, location: @reservation }
       else
@@ -74,6 +82,6 @@ class ReservationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def reservation_params
-      params.require(:reservation).permit(:seat, :day, :function_id)
+      params.require(:reservation).permit(:day)
     end
 end
