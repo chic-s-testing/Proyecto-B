@@ -1,0 +1,47 @@
+29_nov_matine_asiento_a1:
+  id: 1
+  seat: 1
+  day: "29-11-2021"
+  function_id: 1
+29_nov_matine_asiento_a2:
+  id: 2
+  seat: 2
+  day: "29-11-2021"
+  function_id: 1
+29_nov_matine_asiento_a3:
+  id: 3
+  seat: 3
+  day: "29-11-2021"
+  function_id: 1
+
+01_dic_tanda_asiento_b2:
+  id: 4
+  seat: 14
+  day: "01-12-2021"
+  function_id: 2
+01_dic_tanda_asiento_b3:
+  id: 5
+  seat: 15
+  day: "01-12-2021"
+  function_id: 2
+01_dic_tanda_asiento_b4:
+  id: 6
+  seat: 16
+  day: "01-12-2021"
+  function_id: 2
+
+05_dic_noche_asiento_d10:
+  id: 7
+  seat: 46
+  day: "05-12-2021"
+  function_id: 3
+05_dic_noche_asiento_d11:
+  id: 8
+  seat: 47
+  day: "05-12-2021"
+  function_id: 3
+05_dic_noche_asiento_d12:
+  id: 9
+  seat: 48
+  day: "05-12-2021"
+  function_id: 3
