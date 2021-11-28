@@ -51,14 +51,16 @@
         <div class="column">
           <h2 class="subtitle">Reservas realizadas:</h2>
           <% (@function.reservations).each do |reservation| %>
-            <% if  1 <= reservation.seat.to_i && 12 >= reservation.seat.to_i%>
-              A<%= reservation.seat %>
-            <% elsif  13 <= reservation.seat.to_i && 24 >= reservation.seat.to_i%>
-              B<%= (reservation.seat + 1)% 13%>
-            <% elsif  25 <= reservation.seat.to_i && 36 >= reservation.seat.to_i%>
-              C<%= (reservation.seat + 2)% 13%>
-            <% elsif  37 <= reservation.seat.to_i && 48 >= reservation.seat.to_i%>
-              D<%= (reservation.seat + 3)% 13%>
+            <% if reservation.day.to_s == params[:date] %>
+              <% if  1 <= reservation.seat.to_i && 12 >= reservation.seat.to_i%>
+                A<%= reservation.seat %>
+              <% elsif  13 <= reservation.seat.to_i && 24 >= reservation.seat.to_i%>
+                B<%= (reservation.seat + 1)% 13%>
+              <% elsif  25 <= reservation.seat.to_i && 36 >= reservation.seat.to_i%>
+                C<%= (reservation.seat + 2)% 13%>
+              <% elsif  37 <= reservation.seat.to_i && 48 >= reservation.seat.to_i%>
+                D<%= (reservation.seat + 3)% 13%>
+              <% end %>
             <% end %>
           <% end %>
         </div>
