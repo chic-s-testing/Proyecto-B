@@ -1,6 +1,11 @@
 require 'rails_helper'
+require 'database_cleaner/active_record'
 
 RSpec.describe 'New Function', type: :feature do
+  before :all do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
 
   before (:each) do
     visit '/movies/new'
@@ -31,6 +36,10 @@ RSpec.describe 'New Function', type: :feature do
     select "Tanda", from: 'function_schedule'
     click_button "commit"
     expect(page).to have_content("La función fue creada exitosamente.")
+  end
+
+  after :all do
+    DatabaseCleaner.clean
   end
 end
 

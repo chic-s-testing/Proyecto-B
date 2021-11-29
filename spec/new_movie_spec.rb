@@ -98,6 +98,11 @@ RSpec.describe 'Blank Initial Date for new movie', type: :feature do
 end
 
 RSpec.describe 'Sucessfully create movie', type: :feature do
+  before :all do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.start
+  end
+
   it 'success' do
     visit '/movies/new'
     fill_in 'movie_name', :with => "Percy Jackson"
@@ -106,5 +111,9 @@ RSpec.describe 'Sucessfully create movie', type: :feature do
     fill_in 'movie_finalDate', :with => "01-01-2024"
     click_button "commit"
     expect(page).to have_content("La película fue creada con éxito.")
+  end
+  
+  after :all do
+    DatabaseCleaner.clean
   end
 end

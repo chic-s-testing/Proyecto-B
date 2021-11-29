@@ -1,0 +1,6 @@
+movie:
+  id: 1
+  name: "Percy Jackson"
+  photo: "https://m.media-amazon.com/images/M/MV5BMTQ5NDlmZWUtMjIyMC00NzQ3LTg3OWYtMzRkY2FiNzQ0Njc4XkEyXkFqcGdeQXVyNDQ2MTMzODA@._V1_.jpg"
+  initialDate: "29-11-2022"
+  finalDate: "05-12-2022"

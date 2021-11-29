@@ -1,0 +1,15 @@
+matine:
+  id: 1
+  schedule: "matine"
+  room: 1
+  movie_id: 1
+tanda:
+  id: 2
+  schedule: "tanda"
+  room: 4
+  movie_id: 1
+noche:
+  id: 3
+  schedule: "noche"
+  room: 8
+  movie_id: 1
