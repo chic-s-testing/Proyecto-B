@@ -1,5 +1,9 @@
 # Proyecto B - chic-s testing
 
+## Video demo
+
+[Enlace al video demo](https://youtu.be/Mb6IjiEf6ac)
+
 ## Desarrollo con docker
 ### Requisitos
 - `docker`
